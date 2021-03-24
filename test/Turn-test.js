@@ -46,7 +46,7 @@ describe('Turn', function() {
 
     expect(turn1.evaluateGuess()).to.equal(true);
     expect(turn2.evaluateGuess()).to.equal(false);
-  })
+  });
 
   it('giveFeedback should returns "Correct!" if guess matches correct answer, and "Incorrect" if not', function() {
     const card = new Card(4, 'what array method executes a provided function once for each array element?', ['map', 'forEach', 'filter'], 'forEach');
@@ -55,5 +55,6 @@ describe('Turn', function() {
 
     expect(turn1.evaluateGuess()).to.equal(true);
     expect(turn2.evaluateGuess()).to.equal(false);
-  })
+  });
+  
 })
