@@ -35,7 +35,6 @@ describe('Deck', function() {
 
     const cards = [card1, card2, card3]
     const deck = new Deck(cards);
-    console.log(deck.cardsLength)
     expect(deck.cardsLength).to.equal(3);
   })
 
