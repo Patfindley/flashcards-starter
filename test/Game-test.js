@@ -1,22 +1,42 @@
 const chai = require('chai');
 const expect = chai.expect;
 
+const Card = require('../src/Card');
+const Deck = require('../src/Deck');
+const Turn = require('../src/Turn');
+const Round = require('../src/Round');
+
+
 const Game = require('../src/Game');
 
 describe('Game', function() {
+  let card1, card2, card3, cards, deck, round, game;
 
-  it('should keep track of the current round', function() {
-    const card1 = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
-    const card2 = new Card(2, 'what array method executes a provided function once for each array element?', ['map', 'forEach', 'filter'], 'forEach');
-    const card3 = new Card(3, 'what array method creates a new array with all elements that pass the test implemented by the provided function?', ['for loop', 'filter', 'if statement'], 'filter');
+  beforeEach(function() {
+    card1 = new Card(1, 'What allows you to define a set of related information using key-value pairs?', ['object', 'array', 'function'], 'object');
+    card2 = new Card(2, 'what array method executes a provided function once for each array element?', ['map', 'forEach', 'filter'], 'forEach');
+    card3 = new Card(3, 'what array method creates a new array with all elements that pass the test implemented by the provided function?', ['for loop', 'filter', 'if statement'], 'filter');
 
-    const cards = [card1, card2, card3]
-    const deck = new Deck(cards);
+    cards = [card1, card2, card3]
+    deck = new Deck(cards);
 
-    const round = new Round(deck);
+    round = new Round(deck);
 
-    const game = new Game(round);
+    game = new Game(round);
+  });
 
-    expect(game.round).to.be.a('function');
-  })
+  it('should have start method that starts game', function() {
+
+    expect(game.start).to.be.a('function');
+  });
+
+  it.skip('should start a game and a round with populated deck & prompts', function() {
+
+    game.start();
+    expect(game.currentRound.turns).to.equal(0);
+    expect(game.currentRound.deck.cards).to.be.an('array');
+    expect(game.printMessage).to.be.a('function');
+    expect(game.printQuestion).to.be.a('function');
+  });
+
 })
